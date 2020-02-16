@@ -1,0 +1,7 @@
+.board {
+    padding-left: 250px;
+}
+
+body > div > img {
+    height: 600px;
+}
