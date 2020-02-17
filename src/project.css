@@ -1,7 +1,23 @@
-.board {
-    padding-left: 250px;
+#board {
+    height: 560px;
+    width: 560px;
 }
 
-body > div > img {
-    height: 600px;
+section > div {
+    height: 70px;
+    width: 560px;
 }
+
+.possible {
+    background-color: black;
+    height: 70px;
+    width: 70px;
+}
+
+.not-possible {
+    background-color:white;
+    height: 70px;
+    width: 70px;
+}
+
+

@@ -14,29 +14,36 @@ const piecesImages = []
 window.addEventListener("load", event => {
     let pieces = ``;
     let piecesDivs = ``;
-    let boardMatrixPerLine = [];
-    for (let i = 0; i < 6; i++) {
+    let variavel = ``;
+    for (let i = 0; i < 8; i++) {
+        variavel = `<div id = "fileira${i}"></div>`;
+        document.querySelector(`#board`).innerHTML = variavel;
+        console.log(document.querySelector(`#board`));
         for (let j = 0; j < 8; j++) {
-            if (i % 2 === 0 && j % 2 === 0) {
-                pieces = `<div index = ${i}.${j} class= occupied><img src="../img/piece.jpg" alt=""></div>`;
-                piecesDivs += `<div index = ${i}.${j} class= occupied><img src="../img/piece.jpg" alt=""></div>`;
+            if (i % 2 === 0 && j % 2 === 0 && j !== 4) {
+                piecesDivs += `<div index = ${i}.${j} class = "occupied possible"></div>`;
             }
-            if (j % 2 !== 0 && j % 2 !== 0) {
-                pieces = `<div index = ${i}.${j} class= occupied><img src="../img/piece.jpg" alt=""></div>`;
-                piecesDivs += `<div index = ${i}.${j} class= occupied><img src="../img/piece.jpg" alt=""></div>`;
-            } else {
-                pieces = `<div index = ${i}.${j} class= empty></div>`;
-                piecesDivs += `<div index = ${i}.${j} class= empty></div>`;
+            if (i % 2 === 0 && j % 2 === 0 && j === 4) {
+                piecesDivs += `<div index = ${i}.${j} class = "not-occupied possible"></div>`;
             }
-            boardMatrixPerLine.push(pieces);
-            pieces = 0;
+            if (i % 2 !== 0 && j % 2 !== 0 && j !== 3) {
+                piecesDivs += `<div index = ${i}.${j} class = "occupied possible"></div>`;
+            }
+            if (i % 2 !== 0 && j % 2 !== 0 && j === 3) {
+                piecesDivs += `<div index = ${i}.${j} class = "not-occupied possible"></div>`;
+            }
+            if ((i % 2 === 0 && j % 2 !== 0) || (i % 2 !== 0 && j % 2 === 0)) {
+                piecesDivs += `<div index = ${i}.${j} class= "not-possible"></div>`;
+            }
         }
-        boardMatrix.push(boardMatrixPerLine);
-        boardMatrixPerLine = [];
+        document.querySelector(`#fileira${i}`).innerHTML = piecesDivs;
+        // pieces += document.querySelector(`#fileira${i}`).innerHTML;
+        piecesDivs = ``;
     }
-    document.querySelector("#board").innerHTML = piecesDivs;
+    // document.querySelector(`#board`).innerHTML = pieces;
 
-
+   
+    //<img src="../img/piece.jpg" alt="">
 
 })
 
