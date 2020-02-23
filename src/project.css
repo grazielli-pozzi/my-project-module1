@@ -4,6 +4,7 @@
 }
 
 section > div {
+    display: flex;
     height: 70px;
     width: 560px;
 }
@@ -19,5 +20,26 @@ section > div {
     height: 70px;
     width: 70px;
 }
+
+.team-1 {
+    background-color: pink;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+}
+
+.team-2 {
+    background-color:blueviolet;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+}
+
+#selected {
+    background-color: green;
+}
+
+
+
 
 
