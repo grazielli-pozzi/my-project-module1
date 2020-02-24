@@ -1,27 +1,21 @@
 class Game {
-    constructor(pieces, countTurns) {
+    constructor(pieces) {
         this.pieces = pieces;
         this.possiblePositionX = 0;
         this.possiblePositionY = [];
         this.earlierTeam = '';
-        this.countTurns = countTurns;
+        this.countTurns = 0;
     }
 
     checkTeamturn(){
-        if(this.countTurns === 0){
+        if(this.countTurns%2=== 0){
             currentTeam = 'team-1';
-        } else if(this.earlierTeam === 'team-1'){
-            currentTeam = 'team-2';
         } else{
-            currentTeam = 'team-1'; 
+            currentTeam = 'team-2'; 
         }
     }
 
-    checkPossibilities(team, j, i){
-        if(team==='team-1'){
-            this.possiblePositions = [i+1]
-        }
-    }
+
 
 
 }
