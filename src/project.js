@@ -56,6 +56,10 @@ window.addEventListener("load", event => {
     let index4;
     let nextTeam = "piece team-2";
     let pieceDeleted = [];
+    let checkDeleted;
+    let pieceClicked;
+    let countStolenTeam1 = 0;
+    let countStolenTeam2 = 0;
 
 
     document.querySelectorAll("div.piece").forEach(piece => {
@@ -63,7 +67,6 @@ window.addEventListener("load", event => {
             // if (firstClick === secondClick - 1) {
                 let pieceselected = piece;
                 let identificador = pieceselected.parentNode.getAttribute("index");
-                console.log(identificador);
                 let index = identificador.split(".");
                 let i = parseInt(index[0]);
                 let j = parseInt(index[1]);
@@ -94,7 +97,6 @@ window.addEventListener("load", event => {
                                 positionSelected3.setAttribute("id", "selected");
                                 possibilities.push(positionSelected3);
                                 pieceDeleted.push(positionSelected1);
-                                console.log(pieceDeleted);
                             }
                         }
                         if (positionSelected2.children.length === 0) {
@@ -109,7 +111,6 @@ window.addEventListener("load", event => {
                                 positionSelected4.setAttribute("id", "selected");
                                 possibilities.push(positionSelected4);
                                 pieceDeleted.push(positionSelected2);
-                                console.log(pieceDeleted);
                             }
                         }
                     } else if (j === 1) {
@@ -131,7 +132,6 @@ window.addEventListener("load", event => {
                                 positionSelected3.setAttribute("id", "selected");
                                 possibilities.push(positionSelected3);
                                 pieceDeleted.push(positionSelected1);
-                                console.log(pieceDeleted);
                             }
                         }
                         if (positionSelected2.children.length === 0) {
@@ -161,7 +161,6 @@ window.addEventListener("load", event => {
                                 positionSelected4.setAttribute("id", "selected");
                                 possibilities.push(positionSelected4);
                                 pieceDeleted.push(positionSelected2);
-                                console.log(pieceDeleted);
                             }
                         }
                     }
@@ -182,7 +181,6 @@ window.addEventListener("load", event => {
                                 positionSelected3.setAttribute("id", "selected");
                                 possibilities.push(positionSelected3);
                                 pieceDeleted.push(positionSelected1);
-                                console.log(pieceDeleted);
                             }
                         }
                     } else if (j === 7) {
@@ -202,10 +200,10 @@ window.addEventListener("load", event => {
                                 positionSelected4.setAttribute("id", "selected");
                                 possibilities.push(positionSelected4);
                                 pieceDeleted.push(positionSelected2);
-                                console.log(pieceDeleted);
                             }
                         }
                     }
+                    console.log(pieceDeleted);
                 }
 
                 //Acessando o time 2
@@ -232,7 +230,6 @@ window.addEventListener("load", event => {
                                 positionSelected3.setAttribute("id", "selected");
                                 possibilities.push(positionSelected3);
                                 pieceDeleted.push(positionSelected1);
-                                console.log(pieceDeleted);
                             }
                         }
                         if (positionSelected2.children.length === 0) {
@@ -247,7 +244,6 @@ window.addEventListener("load", event => {
                                 positionSelected4.setAttribute("id", "selected");
                                 possibilities.push(positionSelected4);
                                 pieceDeleted.push(positionSelected2);
-                                console.log(pieceDeleted);
                             }
                         }
                     } else if (j === 1) {
@@ -269,7 +265,6 @@ window.addEventListener("load", event => {
                                 positionSelected3.setAttribute("id", "selected");
                                 possibilities.push(positionSelected3);
                                 pieceDeleted.push(positionSelected1);
-                                console.log(pieceDeleted);
                             }
                         }
                         if (positionSelected2.children.length === 0) {
@@ -299,7 +294,6 @@ window.addEventListener("load", event => {
                                 positionSelected4.setAttribute("id", "selected");
                                 possibilities.push(positionSelected4);
                                 pieceDeleted.push(positionSelected2);
-                                console.log(pieceDeleted);
                             }
                         }
                     }
@@ -320,7 +314,6 @@ window.addEventListener("load", event => {
                                 positionSelected3.setAttribute("id", "selected");
                                 possibilities.push(positionSelected3);
                                 pieceDeleted.push(positionSelected1);
-                                console.log(pieceDeleted);
                             }
                         }
                     } else if (j === 7) {
@@ -340,7 +333,6 @@ window.addEventListener("load", event => {
                                 positionSelected4.setAttribute("id", "selected");
                                 possibilities.push(positionSelected4);
                                 pieceDeleted.push(positionSelected2);
-                                console.log(pieceDeleted);
                             }
                         }
                     }
@@ -360,7 +352,6 @@ window.addEventListener("load", event => {
 
                 buttonsArray.forEach((button, index) => {
                     button.addEventListener('click', () => {
-                        console.log(possibilities[index]);
                         pieceselected.parentElement.removeChild(pieceselected);
 
                         possibilities.forEach(possibility => {
@@ -368,15 +359,81 @@ window.addEventListener("load", event => {
                             possibility.innerHTML = '';
                         })
 
+                        pieceClicked = possibilities[index]; 
+                        console.log(pieceClicked);   
                         possibilities[index].appendChild(pieceselected);
-                        console.log(possibilities[index])
+
+                        if(team === "piece team-1"){
+                            if(j > 1 && j < 6 && pieceClicked === positionSelected3){
+                                positionSelected1.removeChild(positionSelected1.childNodes[0]);
+                                countStolenTeam1 = countStolenTeam1 + 1;
+                                console.log(countStolenTeam1);
+                            }
+                            if(j > 1 && j < 6 && pieceClicked === positionSelected4){
+                                positionSelected2.removeChild(positionSelected2.childNodes[0]);
+                                countStolenTeam1 = countStolenTeam1 + 1;
+                                console.log(countStolenTeam1);
+                            }
+                            if(j === 0 && pieceClicked === positionSelected3){
+                                positionSelected1.removeChild(positionSelected1.childNodes[0]);
+                                countStolenTeam1 = countStolenTeam1 + 1;
+                                console.log(countStolenTeam1);
+                            }
+                            if(j === 1 && pieceClicked === positionSelected3){
+                                positionSelected1.removeChild(positionSelected1.childNodes[0]);
+                                countStolenTeam1 = countStolenTeam1 + 1;
+                                console.log(countStolenTeam1);
+                            }
+                            if(j === 6 && pieceClicked === positionSelected4){
+                                positionSelected2.removeChild(positionSelected2.childNodes[0]);
+                                countStolenTeam1 = countStolenTeam1 + 1;
+                                console.log(countStolenTeam1);
+                            }
+                            if(j === 7 && pieceClicked === positionSelected4){
+                                positionSelected2.removeChild(positionSelected2.childNodes[0]);
+                                countStolenTeam1 = countStolenTeam1 + 1;
+                                console.log(countStolenTeam1);
+                            }
+                            }
+
+                            if(team === "piece team-2"){
+                                if(j > 1 && j < 6 && pieceClicked === positionSelected3){
+                                    positionSelected1.removeChild(positionSelected1.childNodes[0]);
+                                    countStolenTeam2 = countStolenTeam2 + 1;
+                                    console.log(countStolenTeam2);
+                                }
+                                if(j > 1 && j < 6 && pieceClicked === positionSelected4){
+                                    positionSelected2.removeChild(positionSelected2.childNodes[0]);
+                                    countStolenTeam2 = countStolenTeam2 + 1;
+                                    console.log(countStolenTeam2);
+                                }
+                                if(j === 0 && pieceClicked === positionSelected3){
+                                    positionSelected1.removeChild(positionSelected1.childNodes[0]);
+                                    countStolenTeam2 = countStolenTeam2 + 1;
+                                    console.log(countStolenTeam2);
+                                }
+                                if(j === 1 && pieceClicked === positionSelected3){
+                                    positionSelected1.removeChild(positionSelected1.childNodes[0]);
+                                    countStolenTeam2 = countStolenTeam2 + 1;
+                                    console.log(countStolenTeam2);
+                                }
+                                if(j === 6 && pieceClicked === positionSelected4){
+                                    positionSelected2.removeChild(positionSelected2.childNodes[0]);
+                                    countStolenTeam2 = countStolenTeam2 + 1;
+                                    console.log(countStolenTeam2);
+                                }
+                                if(j === 7 && pieceClicked === positionSelected4){
+                                    positionSelected2.removeChild(positionSelected2.childNodes[0]);
+                                    countStolenTeam2 = countStolenTeam2 + 1;
+                                    console.log(countStolenTeam2);
+                                }
+                                }
                         buttonContainer.innerHTML = '';
                         possibilities = [];
                     })
                 });
 
-
-
+                pieceDeleted = [];
                 
             firstClick = firstClick + 1;
         });
