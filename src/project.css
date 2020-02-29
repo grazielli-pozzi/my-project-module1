@@ -39,9 +39,17 @@ section > div {
     background-color: green;
 }
 
+#score {
+    display: flex;
+}
 
+#score-team1 {
+    height: 50%;
+}
 
-
+#score-team2 {
+    height: 50%;
+}
 
 
 

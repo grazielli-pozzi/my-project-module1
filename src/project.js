@@ -56,10 +56,11 @@ window.addEventListener("load", event => {
     let index4;
     let nextTeam = "piece team-2";
     let pieceDeleted = [];
-    let checkDeleted;
     let pieceClicked;
     let countStolenTeam1 = 0;
     let countStolenTeam2 = 0;
+    let scoreTeam1 = 0;
+    let scoreTeam2 = 0;
 
 
     document.querySelectorAll("div.piece").forEach(piece => {
@@ -203,7 +204,6 @@ window.addEventListener("load", event => {
                             }
                         }
                     }
-                    console.log(pieceDeleted);
                 }
 
                 //Acessando o time 2
@@ -337,6 +337,12 @@ window.addEventListener("load", event => {
                         }
                     }
                 }
+
+                scoreTeam1 = document.getElementById('score-team1');
+                scoreTeam1.innerText = `Team 1 has ${countStolenTeam1} pieces of Team 2`;
+                scoreTeam2 = document.getElementById('score-team2');
+                scoreTeam1.innerText = `Team 2 has ${countStolenTeam2} pieces of Team 1`;
+
 
                 let buttonsArray = [];
                 const buttonContainer = document.getElementById('button-container');
